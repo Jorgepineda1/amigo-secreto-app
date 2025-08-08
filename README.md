@@ -60,13 +60,6 @@ challenge-amigo-secreto_esp-main/
 - Verificación de lista no vacía
 - Resultado con animación
 
-## 🎨 Diseño
-
-La aplicación cuenta con un diseño moderno y atractivo:
-- Paleta de colores profesional
-- Tipografías legibles y modernas
-- Animaciones suaves para mejor UX
-- Interfaz intuitiva y fácil de usar
 
 ## 📱 Responsive
 
@@ -75,16 +68,8 @@ La aplicación es completamente responsiva y funciona en:
 - Tablets
 - Dispositivos móviles
 
-## 🤝 Contribuir
 
-Si quieres contribuir a este proyecto:
-1. Haz un fork del repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
 
-## 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
 
