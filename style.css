@@ -155,6 +155,18 @@ ul {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.amigo-item.seleccionado {
+    background-color: #e8f5e8;
+    border-color: #4CAF50;
+    color: #2E7D32;
+    opacity: 0.7;
+}
+
+.amigo-item.seleccionado:hover {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .result-list {
     margin-top: 15px;
     color: #05DF05;
@@ -183,6 +195,38 @@ ul {
     }
 }
 
+.info-item {
+    background-color: var(--color-secondary);
+    padding: 8px 15px;
+    border-radius: 15px;
+    border: 2px solid var(--color-primary);
+    font-size: 16px;
+    color: var(--color-primary);
+    margin-top: 10px;
+}
+
+.final-item {
+    background-color: #fff3cd;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 3px solid #ffc107;
+    color: #856404;
+    font-weight: bold;
+    margin-top: 10px;
+    animation: aparecer 0.5s ease-in-out;
+}
+
+.reinicio-item {
+    background-color: #d1ecf1;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 3px solid #17a2b8;
+    color: #0c5460;
+    font-weight: bold;
+    margin-top: 10px;
+    animation: aparecer 0.5s ease-in-out;
+}
+
 /* Botón de sortear título */
 .button-draw {
     display: flex;
@@ -200,4 +244,20 @@ ul {
 
 .button-draw:hover {
     background-color: var(--color-button-hover);
+}
+
+.button-reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 40px;
+    color: var(--color-white);
+    background-color: #6c757d;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.button-reset:hover {
+    background-color: #5a6268;
 }

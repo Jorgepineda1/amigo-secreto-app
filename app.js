@@ -2,6 +2,8 @@
 
 // Array para almacenar los nombres de los amigos
 let listaAmigos = [];
+// Array para almacenar los amigos ya seleccionados
+let amigosSeleccionados = [];
 
 // Función para agregar un amigo a la lista
 function agregarAmigo() {
@@ -43,8 +45,9 @@ function mostrarListaAmigos() {
     // Agregar cada nombre a la lista
     listaAmigos.forEach((nombre, index) => {
         const li = document.createElement('li');
+        const estaSeleccionado = amigosSeleccionados.includes(nombre);
         li.textContent = `${index + 1}. ${nombre}`;
-        li.className = 'amigo-item';
+        li.className = estaSeleccionado ? 'amigo-item seleccionado' : 'amigo-item';
         listaElement.appendChild(li);
     });
 }
@@ -57,14 +60,29 @@ function sortearAmigo() {
         return;
     }
     
-    // Generar un índice aleatorio
-    const indiceAleatorio = Math.floor(Math.random() * listaAmigos.length);
+    // Verificar si todos ya han sido seleccionados
+    if (amigosSeleccionados.length >= listaAmigos.length) {
+        alert('Todos los amigos ya han sido seleccionados. Haz clic en "Reiniciar Sorteo" para empezar de nuevo.');
+        return;
+    }
+    
+    // Obtener lista de amigos disponibles (no seleccionados)
+    const amigosDisponibles = listaAmigos.filter(amigo => !amigosSeleccionados.includes(amigo));
+    
+    // Generar un índice aleatorio de los disponibles
+    const indiceAleatorio = Math.floor(Math.random() * amigosDisponibles.length);
     
     // Obtener el nombre del amigo sorteado
-    const amigoSorteado = listaAmigos[indiceAleatorio];
+    const amigoSorteado = amigosDisponibles[indiceAleatorio];
+    
+    // Agregar a la lista de seleccionados
+    amigosSeleccionados.push(amigoSorteado);
     
     // Mostrar el resultado
     mostrarResultado(amigoSorteado);
+    
+    // Actualizar la visualización de la lista
+    mostrarListaAmigos();
 }
 
 // Función para mostrar el resultado del sorteo
@@ -80,8 +98,41 @@ function mostrarResultado(amigoSorteado) {
     li.className = 'resultado-item';
     resultadoElement.appendChild(li);
     
+    // Mostrar información adicional
+    const infoLi = document.createElement('li');
+    infoLi.textContent = `Seleccionados: ${amigosSeleccionados.length} de ${listaAmigos.length}`;
+    infoLi.className = 'info-item';
+    resultadoElement.appendChild(infoLi);
+    
+    // Si todos han sido seleccionados, mostrar mensaje especial
+    if (amigosSeleccionados.length >= listaAmigos.length) {
+        const finalLi = document.createElement('li');
+        finalLi.textContent = '¡Todos los amigos han sido seleccionados!';
+        finalLi.className = 'final-item';
+        resultadoElement.appendChild(finalLi);
+    }
+    
     // Hacer scroll hacia el resultado para que sea visible
     resultadoElement.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Función para reiniciar el sorteo
+function reiniciarSorteo() {
+    // Limpiar la lista de seleccionados
+    amigosSeleccionados = [];
+    
+    // Limpiar el resultado
+    const resultadoElement = document.getElementById('resultado');
+    resultadoElement.innerHTML = '';
+    
+    // Actualizar la visualización de la lista
+    mostrarListaAmigos();
+    
+    // Mostrar mensaje de reinicio
+    const mensajeLi = document.createElement('li');
+    mensajeLi.textContent = 'Sorteo reiniciado. ¡Puedes volver a sortear!';
+    mensajeLi.className = 'reinicio-item';
+    resultadoElement.appendChild(mensajeLi);
 }
 
 // Función para manejar la tecla Enter en el campo de entrada
